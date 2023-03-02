@@ -220,9 +220,14 @@ class TemplateKeyWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         Observation is needed because when the parameter node is changed then the GUI must be updated immediately.
         """
 
-        if self._parameterNode:
-            self._parameterNode.disconnectGui(self._parameterNodeGuiTag)
-            self.removeObserver(self._parameterNode, vtk.vtkCommand.ModifiedEvent, self._checkCanApply)
+        if inputParameterNode:
+            self.logic.setDefaultParameters(inputParameterNode)
+
+        # Unobserve previously selected parameter node and add an observer to the newly selected.
+        # Changes of parameter node are observed so that whenever parameters are changed by a script or any other module
+        # those are reflected immediately in the GUI.
+        if self._parameterNode is not None and self.hasObserver(self._parameterNode, vtk.vtkCommand.ModifiedEvent, self.updateGUIFromParameterNode):
+            self.removeObserver(self._parameterNode, vtk.vtkCommand.ModifiedEvent, self.updateGUIFromParameterNode)
         self._parameterNode = inputParameterNode
         if self._parameterNode:
             # Note: in the .ui file, a Qt dynamic property called "SlicerParameterName" is set on each
