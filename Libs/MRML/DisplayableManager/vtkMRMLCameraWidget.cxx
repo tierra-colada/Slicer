@@ -729,6 +729,10 @@ bool vtkMRMLCameraWidget::ProcessSpin(vtkMRMLInteractionEventData* eventData)
 //----------------------------------------------------------------------------
 bool vtkMRMLCameraWidget::ProcessTranslate(vtkMRMLInteractionEventData* eventData)
 {
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
   if (!this->Renderer || !eventData)
     {
     return false;
@@ -775,17 +779,13 @@ bool vtkMRMLCameraWidget::ProcessTranslate(vtkMRMLInteractionEventData* eventDat
     oldPickPoint[0] - newPickPoint[0],
     oldPickPoint[1] - newPickPoint[1],
     oldPickPoint[2] - newPickPoint[2],
-    0.0
+    oldPickPoint[3] - newPickPoint[3]
     };
 
   // If model transform is applied to the camera (scale, shear, rotations and translations)
   // then we need to take that into account otherwise we will get
   // under/over estimated translations if camera is scaled for example
-  vtkMatrix4x4* cameraModelTransformMatrix = camera->GetModelTransformMatrix();
-  if (cameraModelTransformMatrix)
-    {
-    cameraModelTransformMatrix->MultiplyPoint(motionVector, motionVector);
-    }
+  camera->GetModelTransformMatrix()->MultiplyPoint(motionVector, motionVector);
 
   camera->GetFocalPoint(viewFocus);
 

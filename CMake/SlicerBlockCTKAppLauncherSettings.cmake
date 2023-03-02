@@ -169,6 +169,16 @@ set(SLICER_ADDITIONAL_PATH_ENVVARS_BUILD
   "QT_PLUGIN_PATH"
   )
 
+# JULIA_DEPOT_PATH
+set(SLICER_JULIA_DEPOT_PATH_BUILD
+  "${julia_ROOT}/.julia"
+  "${julia_ROOT}/local/share/julia"
+  "${julia_ROOT}/share/julia"
+  )
+list(APPEND SLICER_ADDITIONAL_PATH_ENVVARS_BUILD
+  "JULIA_DEPOT_PATH"
+  )
+
 # Note: The addition of SLICER_HOME to the build environment has been motivated by
 #       EMSegmentCommandLine executable. Indeed, this CLI is instantiating
 #       qSlicerApplication which requires SLICER_HOME to be set so that it could
@@ -307,6 +317,16 @@ set(SLICER_QT_PLUGIN_PATH_INSTALLED
   )
 set(SLICER_ADDITIONAL_PATH_ENVVARS_INSTALLED
   "QT_PLUGIN_PATH"
+  )
+
+# JULIA_DEPOT_PATH
+set(SLICER_JULIA_DEPOT_PATH_INSTALLED
+  "<APPLAUNCHER_SETTINGS_DIR>/../.julia"
+  "<APPLAUNCHER_SETTINGS_DIR>/../local/share/julia"
+  "<APPLAUNCHER_SETTINGS_DIR>/../share/julia"
+  )
+list(APPEND SLICER_ADDITIONAL_PATH_ENVVARS_INSTALLED
+  "JULIA_DEPOT_PATH"
   )
 
 # PYTHONPATH
