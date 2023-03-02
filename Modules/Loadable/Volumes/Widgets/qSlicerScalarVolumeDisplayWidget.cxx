@@ -233,6 +233,20 @@ void qSlicerScalarVolumeDisplayWidget::updateWidgetFromMRML()
     {
     d->ColorTableComboBox->setCurrentNode(displayNode->GetColorNode());
     d->InterpolateCheckbox->setChecked(displayNode->GetInterpolate());
+    bool lockedWindowLevel = displayNode->GetWindowLevelLocked();
+    d->LockWindowLevelButton->setChecked(lockedWindowLevel);
+    if (lockedWindowLevel)
+      {
+      d->LockWindowLevelButton->setIcon(QIcon(":Icons/Medium/SlicerLock.png"));
+      d->LockWindowLevelButton->setToolTip(tr("Click to enable modification of Window/Level values"));
+      }
+    else
+      {
+      d->LockWindowLevelButton->setIcon(QIcon(":Icons/Medium/SlicerUnlock.png"));
+      d->LockWindowLevelButton->setToolTip(tr("Click to prevent modification of Window/Level values"));
+      }
+    d->PresetsWidget->setEnabled(!lockedWindowLevel);
+    d->MRMLWindowLevelWidget->setEnabled(!lockedWindowLevel);
     }
   this->updateHistogram();
 }

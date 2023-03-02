@@ -231,28 +231,34 @@ void vtkMRMLViewNode::PrintSelf(ostream& os, vtkIndent indent)
 //------------------------------------------------------------------------------
 double* vtkMRMLViewNode::defaultBackgroundColor()
 {
-  //static double backgroundColor[3] = {0.70196, 0.70196, 0.90588};
-  static double backgroundColor[3] = {0.7568627450980392,
-                                      0.7647058823529412,
-                                      0.9098039215686275};
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
+  // Gray colors from 'Lonely whistle background' defined in 'qSlicerAxesModule'
+  static double backgroundColor[3] = {196, 197, 184};
   return backgroundColor;
 }
 
 //------------------------------------------------------------------------------
 double* vtkMRMLViewNode::defaultBackgroundColor2()
 {
-  static double backgroundColor2[3] = {0.4549019607843137,
-                                       0.4705882352941176,
-                                       0.7450980392156863};
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
+  // Gray colors from 'Lonely whistle background' defined in 'qSlicerAxesModule'
+
+  static double backgroundColor2[3] = {148, 149, 140};
   return backgroundColor2;
 }
 
 //------------------------------------------------------------------------------
 void vtkMRMLViewNode::GetDefaultBoxColor(double color[3])
 {
-  color[0] = 1.0;
-  color[1] = 0.0;
-  color[2] = 1.0;
+  color[0] = 237.0/255.0;
+  color[1] = 104.0/255.0;
+  color[2] = 9.0/255.0;
 }
 
 //---------------------------------------------------------------------------
