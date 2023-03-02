@@ -1740,6 +1740,10 @@ void vtkMRMLSliceLogic::FitFOVToBackground(double fov)
 //----------------------------------------------------------------------------
 void vtkMRMLSliceLogic::ResizeSliceNode(double newWidth, double newHeight)
 {
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
   if (!this->SliceNode)
     {
     return;
@@ -1775,12 +1779,12 @@ void vtkMRMLSliceLogic::ResizeSliceNode(double newWidth, double newHeight)
     newFOV[1] = oldFOV[1];
     }
   newFOV[2] = sliceStep * oldDimensions[2];
-  double windowAspect = (newWidth != 0. ? newHeight / newWidth : 1.);
-  double planeAspect = (newFOV[0] != 0. ? newFOV[1] / newFOV[0] : 1.);
-  if (windowAspect != planeAspect)
-    {
-    newFOV[0] = (windowAspect != 0. ? newFOV[1] / windowAspect : newFOV[0]);
-    }
+  // double windowAspect = (newWidth != 0. ? newHeight / newWidth : 1.);
+  // double planeAspect = (newFOV[0] != 0. ? newFOV[1] / newFOV[0] : 1.);
+  // if (windowAspect != planeAspect)
+  //   {
+  //   newFOV[0] = (windowAspect != 0. ? newFOV[1] / windowAspect : newFOV[0]);
+  //   }
   int disabled = this->SliceNode->StartModify();
   this->SliceNode->SetDimensions(newWidth, newHeight, oldDimensions[2]);
   this->SliceNode->SetFieldOfView(newFOV[0], newFOV[1], newFOV[2]);

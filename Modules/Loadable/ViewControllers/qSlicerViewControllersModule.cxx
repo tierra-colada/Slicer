@@ -195,6 +195,10 @@ void qSlicerViewControllersModule::writeDefaultThreeDViewSettings(vtkMRMLViewNod
 //-----------------------------------------------------------------------------
 void qSlicerViewControllersModule::readDefaultSliceViewSettings(vtkMRMLSliceNode* defaultViewNode)
 {
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
   if (!defaultViewNode)
     {
     qCritical() << Q_FUNC_INFO << " failed: defaultViewNode is invalid";
@@ -202,29 +206,16 @@ void qSlicerViewControllersModule::readDefaultSliceViewSettings(vtkMRMLSliceNode
     }
   QSettings settings;
   settings.beginGroup("DefaultSliceView");
-  if (settings.contains("Orientation"))
-    {
-    QString defaultSliceOrientation = settings.value("Orientation").toString();
-    if (defaultSliceOrientation == "PatientRightIsScreenLeft")
-      {
-      vtkMRMLSliceNode::AddDefaultSliceOrientationPresets(this->mrmlScene(), true);
-      }
-    else if (defaultSliceOrientation == "PatientRightIsScreenRight")
-      {
-      vtkMRMLSliceNode::AddDefaultSliceOrientationPresets(this->mrmlScene(), false);
-      }
-    else
-      {
-      qWarning() << Q_FUNC_INFO << ": Unknown DefaultSliceView/Orientation setting " << defaultSliceOrientation << ", using PatientRightIsScreenLeft instead.";
-      vtkMRMLSliceNode::AddDefaultSliceOrientationPresets(this->mrmlScene(), true);
-      }
-    }
   readCommonViewSettings(defaultViewNode, settings);
 }
 
 //-----------------------------------------------------------------------------
 void qSlicerViewControllersModule::writeDefaultSliceViewSettings(vtkMRMLSliceNode* defaultViewNode)
 {
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
   if (!defaultViewNode)
     {
     qCritical() << Q_FUNC_INFO << " failed: defaultViewNode is invalid";
@@ -233,14 +224,7 @@ void qSlicerViewControllersModule::writeDefaultSliceViewSettings(vtkMRMLSliceNod
   QSettings settings;
   settings.beginGroup("DefaultSliceView");
 
-  vtkNew<vtkMatrix3x3> axialOrientationForPatientRightIsScreenRight;
-  vtkMRMLSliceNode::GetAxialSliceToRASMatrix(axialOrientationForPatientRightIsScreenRight, false);
-  vtkMatrix3x3* axialOrientation = defaultViewNode->GetSliceOrientationPreset("Axial");
   QString defaultSliceOrientation("PatientRightIsScreenLeft");
-  if (vtkAddonMathUtilities::MatrixAreEqual(axialOrientation, axialOrientationForPatientRightIsScreenRight))
-    {
-    defaultSliceOrientation = "PatientRightIsScreenRight";
-    }
   settings.setValue("Orientation", defaultSliceOrientation);
 
   writeCommonViewSettings(defaultViewNode, settings);

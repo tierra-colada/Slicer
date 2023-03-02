@@ -431,6 +431,10 @@ void qMRMLThreeDViewControllerWidget::updateWidgetFromMRMLViewLogic()
 // --------------------------------------------------------------------------
 void qMRMLThreeDViewControllerWidget::updateWidgetFromMRMLView()
 {
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
   Q_D(qMRMLThreeDViewControllerWidget);
   Superclass::updateWidgetFromMRMLView();
   // Enable buttons
@@ -483,11 +487,11 @@ void qMRMLThreeDViewControllerWidget::updateWidgetFromMRMLView()
 
   double* color = viewNode->GetBackgroundColor();
   QColor backgroundColor = QColor::fromRgbF(color[0], color[1], color[2]);
-  d->actionSetBlackBackground->setChecked(backgroundColor == Qt::black);
-  d->actionSetWhiteBackground->setChecked(backgroundColor == Qt::white);
-  d->actionSetLightBlueBackground->setChecked(
-    !d->actionSetBlackBackground->isChecked() &&
-    !d->actionSetWhiteBackground->isChecked());
+  // d->actionSetBlackBackground->setChecked(backgroundColor == Qt::black);
+  // d->actionSetWhiteBackground->setChecked(backgroundColor == Qt::white);
+  // d->actionSetLightBlueBackground->setChecked(
+  //   !d->actionSetBlackBackground->isChecked() &&
+  //   !d->actionSetWhiteBackground->isChecked());
 
   d->OrthoButton->setChecked(viewNode->GetRenderMode() == vtkMRMLViewNode::Orthographic);
 
@@ -779,14 +783,13 @@ void qMRMLThreeDViewControllerWidget::setFPSVisible(bool visible)
 // --------------------------------------------------------------------------
 void qMRMLThreeDViewControllerWidget::setLightBlueBackground()
 {
-  this->setBackgroundColor(QColor::fromRgbF(
-    vtkMRMLViewNode::defaultBackgroundColor()[0],
-    vtkMRMLViewNode::defaultBackgroundColor()[1],
-    vtkMRMLViewNode::defaultBackgroundColor()[2]),
-    QColor::fromRgbF(
-    vtkMRMLViewNode::defaultBackgroundColor2()[0],
-    vtkMRMLViewNode::defaultBackgroundColor2()[1],
-    vtkMRMLViewNode::defaultBackgroundColor2()[2]));
+  //===================
+  // MODIFIED BY COLADA
+  //===================
+
+  this->setBackgroundColor(
+    QColor::fromRgbF(0.7568627450980392, 0.7647058823529412, 0.9098039215686275),
+    QColor::fromRgbF(0.4549019607843137, 0.4705882352941176, 0.7450980392156863));
 }
 
 // --------------------------------------------------------------------------

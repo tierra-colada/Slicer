@@ -87,8 +87,12 @@ if(NOT Slicer_USE_SYSTEM_${proj})
     # TBB
     if(Slicer_USE_TBB)
       list(APPEND _paths ${TBB_BIN_DIR})
+      list(APPEND _paths ${TBB_LIB_DIR})
     endif()
   endif()
+
+  # HDF5
+  list(APPEND _paths ${HDF5_RUNTIME_DIR})
 
   list(JOIN _paths "${_path_sep}" _paths)
 
