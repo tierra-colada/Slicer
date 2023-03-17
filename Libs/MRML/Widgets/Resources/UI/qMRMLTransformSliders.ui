@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>216</width>
-    <height>143</height>
+    <width>325</width>
+    <height>170</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,16 @@
    <property name="spacing">
     <number>2</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>2</number>
+   </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
+   <property name="rightMargin">
+    <number>2</number>
+   </property>
+   <property name="bottomMargin">
     <number>2</number>
    </property>
    <item>
@@ -32,7 +41,7 @@
          <string>Left-Right</string>
         </property>
         <property name="text">
-         <string>LR</string>
+         <string>-X+X</string>
         </property>
        </widget>
       </item>
@@ -64,7 +73,7 @@
          <string>Posterior-Anterior</string>
         </property>
         <property name="text">
-         <string>PA</string>
+         <string>-Y+Y</string>
         </property>
        </widget>
       </item>
@@ -99,7 +108,7 @@
          <string>Inferior-Superior</string>
         </property>
         <property name="text">
-         <string>IS</string>
+         <string>-Z+Z</string>
         </property>
        </widget>
       </item>
@@ -140,7 +149,16 @@
          <property name="spacing">
           <number>0</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
