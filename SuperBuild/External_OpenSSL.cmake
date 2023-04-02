@@ -379,8 +379,12 @@ else()
   ExternalProject_Add_Empty(${proj} DEPENDS ${${proj}_DEPENDENCIES})
 endif()
 
+# required by CMake to find the library
+set(OPENSSL_ROOT_DIR ${OpenSSL_DIR})
 mark_as_superbuild(
-  VARS OPENSSL_INCLUDE_DIR:PATH
+  VARS
+    OPENSSL_ROOT_DIR:PATH
+    OPENSSL_INCLUDE_DIR:PATH
   LABELS "FIND_PACKAGE"
   )
 
