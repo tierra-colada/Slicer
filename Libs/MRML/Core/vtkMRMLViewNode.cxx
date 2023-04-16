@@ -236,7 +236,7 @@ double* vtkMRMLViewNode::defaultBackgroundColor()
   //===================
 
   // Gray colors from 'Lonely whistle background' defined in 'qSlicerAxesModule'
-  static double backgroundColor[3] = {196, 197, 184};
+  static double backgroundColor[3] = {169.0/256.0, 169.0/256.0, 169.0/256.0};
   return backgroundColor;
 }
 
@@ -249,7 +249,7 @@ double* vtkMRMLViewNode::defaultBackgroundColor2()
 
   // Gray colors from 'Lonely whistle background' defined in 'qSlicerAxesModule'
 
-  static double backgroundColor2[3] = {148, 149, 140};
+  static double backgroundColor2[3] = {228.0/256.0, 228.0/256.0, 228.0/256.0};
   return backgroundColor2;
 }
 
