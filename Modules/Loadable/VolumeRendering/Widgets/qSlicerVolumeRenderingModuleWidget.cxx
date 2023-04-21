@@ -153,6 +153,9 @@ void qSlicerVolumeRenderingModuleWidgetPrivate::setupUi(qSlicerVolumeRenderingMo
 
   void onAutoReleaseGraphicsResourcesChanged(bool autoRelease);
 
+  // hide presets
+  this->PresetComboBox->setVisible(false);
+
   // Volume Properties
   this->PresetComboBox->setMRMLScene(volumeRenderingLogic->GetPresetsScene());
   this->PresetComboBox->setCurrentNode(nullptr);
