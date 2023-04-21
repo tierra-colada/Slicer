@@ -565,10 +565,10 @@ void vtkSlicerVolumeRenderingLogic::SetWindowLevelToVolumeProp(
 
   volumeProp->SetInterpolationTypeToLinear();
   volumeProp->ShadeOn();
-  volumeProp->SetAmbient(0.30);
-  volumeProp->SetDiffuse(0.60);
-  volumeProp->SetSpecular(0.50);
-  volumeProp->SetSpecularPower(40);
+  volumeProp->SetAmbient(1);
+  volumeProp->SetDiffuse(0.15);
+  volumeProp->SetSpecular(0.05);
+  volumeProp->SetSpecularPower(1);
 }
 
 //----------------------------------------------------------------------------
@@ -641,10 +641,10 @@ void vtkSlicerVolumeRenderingLogic::SetLabelMapToVolumeProp(vtkScalarsToColors* 
 
   volumeProp->SetInterpolationTypeToNearest();
   volumeProp->ShadeOn();
-  volumeProp->SetAmbient(0.30);
-  volumeProp->SetDiffuse(0.60);
-  volumeProp->SetSpecular(0.50);
-  volumeProp->SetSpecularPower(40);
+  volumeProp->SetAmbient(1);
+  volumeProp->SetDiffuse(0.15);
+  volumeProp->SetSpecular(0.05);
+  volumeProp->SetSpecularPower(1);
 }
 
 //----------------------------------------------------------------------------
