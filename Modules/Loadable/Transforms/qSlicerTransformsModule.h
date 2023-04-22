@@ -50,6 +50,7 @@ public:
 
   /// Dependencies of the module
   QStringList dependencies()const override;
+  bool isHidden() const override;
 
   /// Display name for the module
   qSlicerGetTitleMacro(tr("Transforms"));
