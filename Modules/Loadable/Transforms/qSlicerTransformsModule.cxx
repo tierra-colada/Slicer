@@ -81,6 +81,15 @@ QStringList qSlicerTransformsModule::dependencies() const
 }
 
 //-----------------------------------------------------------------------------
+bool qSlicerTransformsModule::isHidden() const
+{
+  // the module is hidden until bug is fixed:
+  // https://discourse.slicer.org/t/segmentation-fault-with-any-applied-qt-
+  // stylesheet-when-switch-off-from-transform-module/21584/7
+  return true;
+}
+
+//-----------------------------------------------------------------------------
 qSlicerAbstractModuleRepresentation* qSlicerTransformsModule::createWidgetRepresentation()
 {
   return new qSlicerTransformsModuleWidget;
