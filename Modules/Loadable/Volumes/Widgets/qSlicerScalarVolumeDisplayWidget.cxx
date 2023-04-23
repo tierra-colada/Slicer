@@ -130,6 +130,9 @@ void qSlicerScalarVolumeDisplayWidgetPrivate::init()
     return;
     }
 
+  // hide presets
+  this->PresetsGroupBox->setVisible(false);
+
   QObject::connect(this->InterpolateCheckbox, SIGNAL(toggled(bool)),
                    q, SLOT(setInterpolate(bool)));
   QObject::connect(this->ColorTableComboBox, SIGNAL(currentNodeChanged(vtkMRMLNode*)),
