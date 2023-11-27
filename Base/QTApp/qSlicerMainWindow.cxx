@@ -736,6 +736,7 @@ void qSlicerMainWindowPrivate::setupStatusBar()
 {
   Q_Q(qSlicerMainWindow);
   this->ErrorLogToolButton = new QToolButton();
+  this->ErrorLogToolButton->setObjectName("ErrorLogToolButton");
   this->ErrorLogToolButton->setDefaultAction(this->ErrorLogToggleViewAction);
   q->statusBar()->addPermanentWidget(this->ErrorLogToolButton);
 
